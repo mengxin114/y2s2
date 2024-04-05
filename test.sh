@@ -37,7 +37,7 @@ else
 fi
 
 
-echo -n "too many S - "
+echo -n "too many Start point - "
 timeout 0.2s ./maze ./testData/badData1.txt 24 7 > tmp
 if grep -q "Error: file does not have expected format" tmp;
 then
@@ -65,3 +65,23 @@ then
 else
     echo "FAIL"
 fi
+
+
+
+echo -n "Testing file loads successfully - "
+./maze ./testData/rightSize.txt 25 8 > tmp
+if grep -q "File successfully loaded." tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+
+echo -n "Testing wrong input - "
+./maze ./testData/rightSize.txt < testInput/wrongInput > temp
+if grep -q "Wrong input." temp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
