@@ -1,23 +1,43 @@
-#include<stdio.h>
-#include"maze.h"
+#include "maze.h"
 
+Maze* map;//store the map data
+int win = 0;
+char in = '';//current input
+char point;//the location of player
 
-
-
-typedef struct mazeData
+int main(int argc, char *argv[])
 {
-
-}data;
-
-
-
-
-
-int main(int argc, char *argv[]){
-    if (argc != 3) {
-        printf("argc error");
-        return EXIT_FAILURE;
+    if (argc != 3)
+    {
+        printf("argument error");
+        return 0;
     }
-    readFile(argc[0]);
 
+    createMaze(argc[2], argc[3]);
+
+    loadMap(argc[1]);//load map and get the location of 'S'
+
+    while (!win)
+    {
+        in = getInput(); // get legal input
+        if (in == 'M')
+            showMap();
+        elif (in == 'X')
+        {
+            closeMap();
+            show();
+        }
+
+        elif (in == '')
+            show();
+        else
+        {
+            move(in);     // if can pass,then move
+            show();
+            checkWin(); // check whether win the game
+        }
+        in = '';//reset the input
+    }
+    free(map);
+    return 0;
 }

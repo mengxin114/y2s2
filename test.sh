@@ -10,7 +10,7 @@ echo -e "~~ Argument Tests ~~"
 ((all_counter++))
 echo -n "test arguments error - "
 ./maze > temp
-if grep -q "arguments error" temp;
+if grep -q "argument error" temp;
 then
     echo -e "\e[32mPASS\e[0m"
     ((pass_counter++))
@@ -22,7 +22,7 @@ fi
 ((all_counter++))
 echo -n "Testing 2 arguments - "
 ./maze x x > tmp
-if grep -q "arguments error" tmp;
+if grep -q "argument error" tmp;
 then
     echo -e "\e[32mPASS\e[0m"
     ((pass_counter++))
@@ -92,15 +92,20 @@ else
     echo -e "\e[31mFAIL\e[0m"
 fi
 
+echo -e "\n~~ input ~~"
+
 ((all_counter++))
 echo -n "Testing wrong input - "
 ./maze ./testData/rightSize.txt 25 8 < ./testInput/wrongInput.txt > temp
-if grep -q "Wrong input." temp;
+if grep -q "Wrong input" temp;
 then
     echo -e "\e[32mPASS\e[0m"
     ((pass_counter++))
 else
     echo -e "\e[31mFAIL\e[0m"
+
+
+echo -e "\n~~ test basic function ~~"
 
 ((all_counter++))
 echo -n "Testing wrong way - "
@@ -123,7 +128,7 @@ else
     echo -e "\e[31mFAIL\e[0m"
 
 ((all_counter++))
-echo -n "Testing map - "
+echo -n "Testing show map - "
 ./maze ./testData/rightSize.txt 25 8 < ./testInput/showMap.txt > temp
 if grep -q "#   X    #             #" temp;
 then
@@ -134,10 +139,15 @@ else
 
 
 
-
-
-
-
+((all_counter++))
+echo -n "Testing win - "
+./maze ./testData/rightSize.txt 25 8 < ./testInput/win.txt > temp
+if grep -q "win" temp;
+then
+    echo -e "\e[32mPASS\e[0m"
+    ((pass_counter++))
+else
+    echo -e "\e[31mFAIL\e[0m"
 
 
 
