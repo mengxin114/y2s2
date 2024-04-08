@@ -1,9 +1,10 @@
 #include "maze.h"
 
-Maze* map;//store the map data
 int win = 0;
-char in = '';//current input
-char point;//the location of player
+char in = ''; // current input
+
+int x;
+int y;   // the location of player
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
 
     createMaze(argc[2], argc[3]);
 
-    loadMap(argc[1]);//load map and get the location of 'S'
+    loadMap(argc[1]); // load map and get the location of 'S'
 
     while (!win)
     {
@@ -27,17 +28,16 @@ int main(int argc, char *argv[])
             closeMap();
             show();
         }
-
         elif (in == '')
             show();
         else
         {
-            move(in);     // if can pass,then move
+            move(in); // if can pass,then move
             show();
             checkWin(); // check whether win the game
         }
-        in = '';//reset the input
+        in = ''; // reset the input
     }
-    free(map);
+    freeMaze(argc[2], argc[3]);
     return 0;
 }
