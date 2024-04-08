@@ -21,7 +21,7 @@ void freeMaze(int height, int width){
 
 
 char getInput(){
-    // return legal input. if input is illegal, return ''
+    // return legal input. if input is illegal, print "Wrong input" and return ''
     // change all the input into uppercase
     char input;
     input = scanf("%c",&input);

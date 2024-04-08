@@ -13,6 +13,8 @@ int main(int argc, char *argv[])
         printf("argument error");
         return 0;
     }
+    else
+        printf("correct arguments");
 
     createMaze(argc[2], argc[3]);
 
