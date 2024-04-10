@@ -1,3 +1,5 @@
+#ifndef __TASKOP_H__
+#define __TASKOP_H__
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -31,3 +33,5 @@ int checkWrongWay();
 
 //check the condition of win
 void checkWin();
+
+#endif
